@@ -16,12 +16,16 @@ namespace SpeedTestCollector
         }
 
         private Configuration _configuration;
+        private MySQLClass _mysql;
 
         public Program() { }
 
         public async Task MainTask()
         {
             _configuration = new Configuration();
+            Sql sqlCon = _configuration.Config.mysql;
+
+            _mysql = new MySQLClass(sqlCon.host, sqlCon.username, sqlCon.password, sqlCon.database);
 
             Result result = getResult();
             Logger.Print($"Download: {result.Results.download.ToString()}");

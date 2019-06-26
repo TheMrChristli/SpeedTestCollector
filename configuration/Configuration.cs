@@ -38,5 +38,14 @@ namespace SpeedTestCollector.configuration
     {
         public string python_path { get; set; }
         public string test_script_path { get; set; }
+        public Sql mysql { get; set; }
+    }
+
+    public class Sql
+    {
+        public string host { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string database { get; set; }
     }
 }
