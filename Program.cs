@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Dynamic;
+using System;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -9,14 +10,16 @@ namespace SpeedTestCollector
 {
     class Program
     {
+        public static Configuration Config { get { return _configuration; } }
+        public static MySQLClass MySQL { get { return _mysql; } }
         static void Main(string[] args)
         {
             Logger.Print("Starting...");
             new Program().MainTask().GetAwaiter().GetResult();
         }
 
-        private Configuration _configuration;
-        private MySQLClass _mysql;
+        private static Configuration _configuration;
+        private static MySQLClass _mysql;
 
         public Program() { }
 

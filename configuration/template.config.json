@@ -5,6 +5,7 @@
         "host": "localhost",
         "username": "username",
         "password": "password",
-        "database": "database"
+        "database": "database",
+        "format": "Speed_%s_%s"
     }
 }

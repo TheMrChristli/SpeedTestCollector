@@ -1718,30 +1718,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Christian\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/christianwenzl/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Christian\\Desktop\\SpeedTestCollector\\SpeedTestCollector.csproj",
+      "projectUniqueName": "/Users/christianwenzl/Desktop/SpeedTestCollector/SpeedTestCollector.csproj",
       "projectName": "SpeedTestCollector",
-      "projectPath": "C:\\Users\\Christian\\Desktop\\SpeedTestCollector\\SpeedTestCollector.csproj",
-      "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Christian\\Desktop\\SpeedTestCollector\\obj\\",
+      "projectPath": "/Users/christianwenzl/Desktop/SpeedTestCollector/SpeedTestCollector.csproj",
+      "packagesPath": "/Users/christianwenzl/.nuget/packages/",
+      "outputPath": "/Users/christianwenzl/Desktop/SpeedTestCollector/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/christianwenzl/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

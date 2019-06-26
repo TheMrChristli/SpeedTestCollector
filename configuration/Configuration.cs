@@ -47,5 +47,6 @@ namespace SpeedTestCollector.configuration
         public string username { get; set; }
         public string password { get; set; }
         public string database { get; set; }
+        public string format { get; set; }
     }
 }
