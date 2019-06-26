@@ -1,0 +1,11 @@
+C:\Users\Christian\Desktop\SpeedTestCollector\bin\Debug\netcoreapp2.2\SpeedTestCollector.deps.json
+C:\Users\Christian\Desktop\SpeedTestCollector\bin\Debug\netcoreapp2.2\SpeedTestCollector.runtimeconfig.json
+C:\Users\Christian\Desktop\SpeedTestCollector\bin\Debug\netcoreapp2.2\SpeedTestCollector.runtimeconfig.dev.json
+c:\Users\Christian\Desktop\SpeedTestCollector\bin\Debug\netcoreapp2.2\SpeedTestCollector.dll
+c:\Users\Christian\Desktop\SpeedTestCollector\bin\Debug\netcoreapp2.2\SpeedTestCollector.pdb
+c:\Users\Christian\Desktop\SpeedTestCollector\obj\Debug\netcoreapp2.2\SpeedTestCollector.csprojAssemblyReference.cache
+c:\Users\Christian\Desktop\SpeedTestCollector\obj\Debug\netcoreapp2.2\SpeedTestCollector.csproj.CoreCompileInputs.cache
+c:\Users\Christian\Desktop\SpeedTestCollector\obj\Debug\netcoreapp2.2\SpeedTestCollector.AssemblyInfoInputs.cache
+c:\Users\Christian\Desktop\SpeedTestCollector\obj\Debug\netcoreapp2.2\SpeedTestCollector.AssemblyInfo.cs
+c:\Users\Christian\Desktop\SpeedTestCollector\obj\Debug\netcoreapp2.2\SpeedTestCollector.dll
+c:\Users\Christian\Desktop\SpeedTestCollector\obj\Debug\netcoreapp2.2\SpeedTestCollector.pdb
