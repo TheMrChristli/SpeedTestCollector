@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Globalization;
 using SpeedTestCollector.configuration;
 using SpeedTestCollector.util;
 
@@ -21,19 +22,47 @@ namespace SpeedTestCollector
         private static Configuration _configuration;
         private static MySQLClass _mysql;
 
-        public Program() { }
-
-        public async Task MainTask()
+        public Program()
         {
             _configuration = new Configuration();
-            Sql sqlCon = _configuration.Config.mysql;
 
+            Sql sqlCon = _configuration.Config.mysql;
             _mysql = new MySQLClass(sqlCon.host, sqlCon.username, sqlCon.password, sqlCon.database);
+        }
+
+        public Task MainTask()
+        {
+            _mysql.Connect();
+
+            createTable();
 
             Result result = getResult();
-            Logger.Print($"Download: {result.Results.download.ToString()}");
-            Logger.Print($"Upload: {result.Results.upload.ToString()}");
-            Logger.Print($"Ping: {result.Results.ping.ToString()}");
+            Output op = Output.ConvertOutput(result.Results);
+
+            string sql = $"INSERT INTO {MySQLClass.TableName} (download, upload, ping) VALUES " +
+                        $"('{op.download.ToString("0.00", CultureInfo.InvariantCulture)}', '{op.upload.ToString("0.00", CultureInfo.InvariantCulture)}', {op.ping})";
+            Logger.Print(sql);
+            _mysql.Update(sql);
+
+
+            /*
+            Logger.Print($"Download: {op.download.ToString()}");
+            Logger.Print($"Upload: {op.upload.ToString()}");
+            Logger.Print($"Ping: {op.ping.ToString()}");
+             */
+            return Task.CompletedTask;
+        }
+
+        void createTable()
+        {
+            string sql = $"CREATE TABLE IF NOT EXISTS {MySQLClass.TableName} (" +
+                                "id INT AUTO_INCREMENT NOT NULL PRIMARY KEY," +
+                                "datetime DATETIME(0) NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
+                                "download VARCHAR(11), " +
+                                "upload VARCHAR(11), " +
+                                "ping INT)";
+
+            _mysql.Update(sql);
         }
 
         Result getResult()

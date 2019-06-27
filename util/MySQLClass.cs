@@ -1,6 +1,7 @@
 using System;
 using System.Data.Common;
 using System.Data;
+using System.Globalization;
 using MySql.Data.MySqlClient;
 
 namespace SpeedTestCollector.util
@@ -66,38 +67,56 @@ namespace SpeedTestCollector.util
             cmd.CommandText = sql;
             return cmd.ExecuteReader();
         }
-        public static string GetTableName()
+        public static string TableName
         {
-            DateTime now = DateTime.Now;
+            get
+            {
+                DateTime now = DateTime.Now;
 
-            string format = Program.Config.Config.mysql.format;
-            string year = now.ToString("yyyy");
-            string month = now.ToString("MM");
+                CultureInfo myCI = new CultureInfo("de-DE");
+                CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
+                DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+                Calendar myCal = myCI.Calendar;
 
-            return String.Format(format, year, month);
+                string format = Program.Config.Config.mysql.format;
+                string year = now.ToString("yyyy");
+                string woty = myCal.GetWeekOfYear(now, myCWR, myFirstDOW).ToString();
+
+                return String.Format(format, year, woty);
+            }
         }
 
-        public static string GetPrevTableName()
+        public static string PrevTableName
         {
-            DateTime now = DateTime.Now;
-
-            string format = Program.Config.Config.mysql.format;
-            string year = now.ToString("yyyy");
-            string month = now.ToString("MM");
-
-            int m = Int32.Parse(month) - 1;
-            int y = Int32.Parse(year);
-
-            if (m == 0)
+            get
             {
-                m = 12;
-                y--;
+                DateTime now = DateTime.Now;
+
+                CultureInfo myCI = new CultureInfo("de-DE");
+                CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
+                DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+                Calendar myCal = myCI.Calendar;
+
+                string format = Program.Config.Config.mysql.format;
+                string year = now.ToString("yyyy");
+                string woty = myCal.GetWeekOfYear(now, myCWR, myFirstDOW).ToString();
+
+                int w = Int32.Parse(woty) - 1;
+                int y = Int32.Parse(year);
+
+                if (w == 0)
+                {
+                    y--;
+
+                    DateTime lastDay = new DateTime(y, 12, 31);
+                    w = myCal.GetWeekOfYear(lastDay, myCWR, myFirstDOW);
+                }
+
+                year = String.Format("{0:d4}", y);
+                woty = String.Format("{0:d2}", w);
+
+                return String.Format(format, year, woty);
             }
-
-            year = String.Format("{0:d4}", y);
-            month = String.Format("{0:d2}", m);
-
-            return String.Format(format, year, month);
         }
     }
 }
